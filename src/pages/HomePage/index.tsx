@@ -75,7 +75,7 @@ export default function HomePage() {
         ref={imgRef}
         src="/course-explainer.avif"
         alt="Course Explainer"
-        className={`w-full max-w-4xl rounded-lg shadow-md mb-16 transform transition-opacity duration-1000 ease-in-out ${isVisible ? "opacity-100 translate-y-0 animate-fade-in" : "opacity-0 translate-y-6"} bg-background dark:invert"`}
+        className={`w-full max-w-4xl rounded-lg shadow-md mb-16 transform transition-opacity duration-1000 ease-in-out ${isVisible ? "opacity-100 translate-y-0 animate-fade-in" : "opacity-0 translate-y-6"} bg-background "`}
       />
       {/* How It Works */}
       <section className="mb-16 w-full max-w-4xl">
