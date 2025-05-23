@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Menu, X } from "lucide-react"
 
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
@@ -18,11 +18,19 @@ interface NavbarProps {
   scrollContainerRef?: React.RefObject<HTMLDivElement>
 }
 
+const NAV_LINKS = [
+  { name: "How it works", path: "#how-it-works" },
+  { name: "Upload", path: "#use-cases" },
+  { name: "Dashboard", path: "/dashboard" },
+  { name: "Product", path: "#product" },
+]
+
 export default function Navbar({ scrollContainerRef }: NavbarProps) {
   const [isAtTop, setIsAtTop] = useState(true)
   const [isVisible, setIsVisible] = useState(true)
   const lastScrollY = useRef(0)
   const ticking = useRef(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const container = scrollContainerRef?.current || window
@@ -48,56 +56,130 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
     return () => container.removeEventListener("scroll", handleScroll)
   }, [scrollContainerRef])
 
+  // Close mobile menu on route change or scroll
+  useEffect(() => {
+    if (!mobileMenuOpen) return
+    const closeMenu = () => setMobileMenuOpen(false)
+    window.addEventListener("resize", closeMenu)
+    return () => window.removeEventListener("resize", closeMenu)
+  }, [mobileMenuOpen])
+
   return (
     <header
       className={cn(
-        "fixed left-1/2 top-4 z-50 mx-auto w-11/12 max-w-6xl -translate-x-1/2 rounded-full px-4 transition-transform duration-300 ease-in-out border border-gray-300 shadow-md backdrop-blur-md bg-white/90",
+        "fixed left-1/2 top-4 z-50 mx-auto w-11/12 max-w-6xl -translate-x-1/2 rounded-full px-4 transition-transform duration-300 ease-in-out",
         isVisible || isAtTop ? "translate-y-0" : "-translate-y-[150%]",
-        !isAtTop && "shadow-lg border-gray-400"
+        !isAtTop && "shadow-lg border border-gray-400 bg-white/90 backdrop-blur-md",
+        isAtTop && "bg-transparent border-none shadow-none backdrop-blur-none"
       )}
     >
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2 font-medium">
-          <span className="text-lg font-semibold">Cluely</span>
+          <span className="text-lg font-semibold">Faceable</span>
         </Link>
+        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
-          <a
-            href="#how-it-works"
-            className="text-sm font-medium text-gray-700 hover:text-gray-900"
-          >
-            How it works
-          </a>
-          <a
-            href="#use-cases"
-            className="text-sm font-medium text-gray-700 hover:text-gray-900"
-          >
-            Use cases
-          </a>
-          <a
-            href="#pricing"
-            className="text-sm font-medium text-gray-700 hover:text-gray-900"
-          >
-            Pricing
-          </a>
-          <a
-            href="#help"
-            className="text-sm font-medium text-gray-700 hover:text-gray-900"
-          >
-            Help
-          </a>
+          {NAV_LINKS.map(link =>
+            link.path.startsWith("/") ? (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="text-sm font-medium text-gray-700 hover:text-gray-900"
+              >
+                {link.name}
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                href={link.path}
+                className="text-sm font-medium text-gray-700 hover:text-gray-900"
+              >
+                {link.name}
+              </a>
+            )
+          )}
         </nav>
-        <div className="flex items-center gap-4">
-          <Link
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMobileMenuOpen((v) => !v)}
+        >
+          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+        <div className="hidden md:flex items-center gap-4">
+          <Button
             to="/login"
             className="text-sm font-medium text-gray-700 hover:text-gray-900"
           >
-            Log in
-          </Link>
-          <Button className="rounded-full bg-black text-white hover:bg-black/90 flex items-center">
+            Login
+          </Button>
+          <Button className="rounded-full bg-black text-sm font-medium text-white flex items-center hover:text-white/70">
             Sign up <ArrowUpRight className="ml-1 h-4 w-4" />
           </Button>
         </div>
       </div>
+      {/* Mobile menu overlay - ensure it closes menu and is fully hidden when closed */}
+      <div
+        className={cn(
+          "fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity md:hidden",
+          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        )}
+        onClick={() => setMobileMenuOpen(false)}
+        aria-hidden={!mobileMenuOpen}
+      />
+      {/* Mobile menu dropdown with close button inside */}
+      <nav
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 bg-white shadow-md transition-transform duration-300 md:hidden flex flex-col gap-4 p-6 pt-20",
+          mobileMenuOpen ? "translate-y-0 opacity-100 pointer-events-auto" : "-translate-y-full opacity-0 pointer-events-none"
+        )}
+        style={{ borderRadius: "0 0 1.5rem 1.5rem" }}
+        aria-label="Mobile menu"
+      >
+        {/* Close button inside dropdown */}
+        <button
+          className="absolute top-4 right-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
+          aria-label="Close menu"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <X className="h-6 w-6" />
+        </button>
+        {NAV_LINKS.map(link =>
+          link.path.startsWith("/") ? (
+            <Link
+              key={link.name}
+              to={link.path}
+              className="text-base font-medium text-gray-700 hover:text-gray-900 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ) : (
+            <a
+              key={link.name}
+              href={link.path}
+              className="text-base font-medium text-gray-700 hover:text-gray-900 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.name}
+            </a>
+          )
+        )}
+        <Link
+          to="/login"
+          className="text-base font-medium text-gray-700 hover:text-gray-900 py-2"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          Log in
+        </Link>
+        <Button
+          className="rounded-full bg-black text-white hover:bg-black/90 flex items-center w-full justify-center mt-2"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          Sign up <ArrowUpRight className="ml-1 h-4 w-4" />
+        </Button>
+      </nav>
     </header>
   )
 }
