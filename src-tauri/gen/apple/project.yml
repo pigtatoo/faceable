@@ -1,4 +1,4 @@
-name: blank-tauri-app
+name: faceable
 options:
   bundleIdPrefix: com.tauri.dev
   deploymentTarget:
@@ -10,7 +10,7 @@ configs:
 settingGroups:
   app:
     base:
-      PRODUCT_NAME: blank-tauri-app
+      PRODUCT_NAME: faceable
       PRODUCT_BUNDLE_IDENTIFIER: com.tauri.dev
       DEVELOPMENT_TEAM: J7TKXRF8TH
       CODE_SIGN_STYLE: Automatic
@@ -26,20 +26,20 @@ targetTemplates:
     settings:
       groups: [app]
 targets:
-  blank-tauri-app_iOS:
+  faceable_iOS:
     type: application
     platform: iOS
     sources:
       - path: Sources
       - path: Assets.xcassets
       - path: Externals
-      - path: blank-tauri-app_iOS
+      - path: faceable_iOS
       - path: assets
         buildPhase: resources
         type: folder
       - path: LaunchScreen.storyboard
     info:
-      path: blank-tauri-app_iOS/Info.plist
+      path: faceable_iOS/Info.plist
       properties:
         LSRequiresIPhoneOS: true
         UILaunchStoryboardName: LaunchScreen
@@ -56,7 +56,7 @@ targets:
         CFBundleShortVersionString: 0.0.0
         CFBundleVersion: 0.0.0
     entitlements:
-      path: blank-tauri-app_iOS/blank-tauri-app_iOS.entitlements
+      path: faceable_iOS/faceable_iOS.entitlements
     scheme:
       environmentVariables:
         RUST_BACKTRACE: full
@@ -74,7 +74,7 @@ targets:
         EXCLUDED_ARCHS[sdk=iphoneos*]: arm64-sim x86_64
       groups: [app]
     dependencies:
-      - framework: libblank_tauri_app_lib.a
+      - framework: libfaceable_lib.a
         embed: false
       - sdk: CoreGraphics.framework
       - sdk: Metal.framework
@@ -88,6 +88,6 @@ targets:
         name: Build Rust Code
         basedOnDependencyAnalysis: false
         outputFiles:
-          - $(SRCROOT)/Externals/x86_64/${CONFIGURATION}/libblank_tauri_app_lib.a
-          - $(SRCROOT)/Externals/arm64/${CONFIGURATION}/libblank_tauri_app_lib.a
-          - $(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libblank_tauri_app_lib.a
+          - $(SRCROOT)/Externals/x86_64/${CONFIGURATION}/libfaceable_lib.a
+          - $(SRCROOT)/Externals/arm64/${CONFIGURATION}/libfaceable_lib.a
+          - $(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libfaceable_lib.a

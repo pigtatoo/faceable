@@ -16,4 +16,4 @@ Uses Tauri 2.
 - HeroUI Component Library
 - Automatic Rust command bindings generation
 
-Replace all occurances of `blank-tauri-app` and `blank_tauri_app` with a custom app name to begin.
+Replace all occurances of `faceable` and `faceable` with a custom app name to begin.

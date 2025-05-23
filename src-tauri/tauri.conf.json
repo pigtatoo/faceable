@@ -1,7 +1,7 @@
 {
-  "productName": "blank-tauri-app",
+  "productName": "faceable",
   "version": "0.0.124",
-  "identifier": "cn.wind-explorer.blank-tauri-app",
+  "identifier": "cn.wind-explorer.faceable",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "blank-tauri-app",
+        "title": "faceable",
         "width": 800,
         "height": 600
       }

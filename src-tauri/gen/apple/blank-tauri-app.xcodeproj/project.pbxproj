@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		001881393923B32B168DF906 /* libblank_tauri_app_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD771A6F959B8527DD10A60C /* libblank_tauri_app_lib.a */; };
+		001881393923B32B168DF906 /* libfaceable_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD771A6F959B8527DD10A60C /* libfaceable_lib.a */; };
 		05EB14B76138AD70CA93AE72 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD006C25FC69A5E24D6EA476 /* WebKit.framework */; };
 		0D773BC8CD629306DD9B77AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616204BAA228B02571C43AD1 /* UIKit.framework */; };
 		1525872EE106057367F4A4A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0FCB6702579F3FEF33AA9B2 /* CoreGraphics.framework */; };
@@ -24,7 +24,7 @@
 /* Begin PBXFileReference section */
 		0150AE03583C2978578DFF3E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08DB5C6EC951543889ABF64F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		1801DA3C74B3E683639ABB35 /* blank-tauri-app_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "blank-tauri-app_iOS.entitlements"; sourceTree = "<group>"; };
+		1801DA3C74B3E683639ABB35 /* faceable_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "faceable_iOS.entitlements"; sourceTree = "<group>"; };
 		2F4C1A5DB3311D6B3E9AC395 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		378677E709407D595AB9FE0E /* main.rs */ = {isa = PBXFileReference; path = main.rs; sourceTree = "<group>"; };
 		443D0A2FBCA86FB9F778AB6A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -33,9 +33,9 @@
 		616204BAA228B02571C43AD1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9BA1AE4B6C4C26F2F7DB7B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A5FC3E3438B64CECE6CAC69F /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = SOURCE_ROOT; };
-		AD771A6F959B8527DD10A60C /* libblank_tauri_app_lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libblank_tauri_app_lib.a; sourceTree = "<group>"; };
+		AD771A6F959B8527DD10A60C /* libfaceable_lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfaceable_lib.a; sourceTree = "<group>"; };
 		C0327F485DF28872FD4A276B /* lib.rs */ = {isa = PBXFileReference; path = lib.rs; sourceTree = "<group>"; };
-		C29D36FC8598D14607A88B9D /* blank-tauri-app_iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "blank-tauri-app_iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C29D36FC8598D14607A88B9D /* faceable_iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "faceable_iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEEC17DC73AF84746B126EC9 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		F0FCB6702579F3FEF33AA9B2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FD006C25FC69A5E24D6EA476 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				001881393923B32B168DF906 /* libblank_tauri_app_lib.a in Frameworks */,
+				001881393923B32B168DF906 /* libfaceable_lib.a in Frameworks */,
 				1525872EE106057367F4A4A4 /* CoreGraphics.framework in Frameworks */,
 				20623F4950B774110D513A4D /* Metal.framework in Frameworks */,
 				1C13EA72B6E483A1193008B4 /* MetalKit.framework in Frameworks */,
@@ -61,20 +61,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		030190E270F32E04E75A9817 /* blank-tauri-app */ = {
+		030190E270F32E04E75A9817 /* faceable */ = {
 			isa = PBXGroup;
 			children = (
 				2F4C1A5DB3311D6B3E9AC395 /* main.mm */,
 				68B3E21902FF1B8FF9E1F2FF /* bindings */,
 			);
-			path = "blank-tauri-app";
+			path = "faceable";
 			sourceTree = "<group>";
 		};
 		10352CDAF6AF617E84B69CDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				F0FCB6702579F3FEF33AA9B2 /* CoreGraphics.framework */,
-				AD771A6F959B8527DD10A60C /* libblank_tauri_app_lib.a */,
+				AD771A6F959B8527DD10A60C /* libfaceable_lib.a */,
 				CEEC17DC73AF84746B126EC9 /* Metal.framework */,
 				598263CC945814B06578354B /* MetalKit.framework */,
 				443D0A2FBCA86FB9F778AB6A /* QuartzCore.framework */,
@@ -88,7 +88,7 @@
 		13DD0B88A17E96845F94EA5C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				030190E270F32E04E75A9817 /* blank-tauri-app */,
+				030190E270F32E04E75A9817 /* faceable */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -96,7 +96,7 @@
 		302F7CCAE26A988AB77A7DD7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C29D36FC8598D14607A88B9D /* blank-tauri-app_iOS.app */,
+				C29D36FC8598D14607A88B9D /* faceable_iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,7 +132,7 @@
 				A5FC3E3438B64CECE6CAC69F /* assets */,
 				494653DDCDBC14895EA57EE5 /* Assets.xcassets */,
 				0150AE03583C2978578DFF3E /* LaunchScreen.storyboard */,
-				C1B15155E9CEB567CB44FB85 /* blank-tauri-app_iOS */,
+				C1B15155E9CEB567CB44FB85 /* faceable_iOS */,
 				6572540DD6C33ECD7D568EDB /* Externals */,
 				13DD0B88A17E96845F94EA5C /* Sources */,
 				7EC4F107E59F9F6CFA397D3C /* src */,
@@ -141,21 +141,21 @@
 			);
 			sourceTree = "<group>";
 		};
-		C1B15155E9CEB567CB44FB85 /* blank-tauri-app_iOS */ = {
+		C1B15155E9CEB567CB44FB85 /* faceable_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				1801DA3C74B3E683639ABB35 /* blank-tauri-app_iOS.entitlements */,
+				1801DA3C74B3E683639ABB35 /* faceable_iOS.entitlements */,
 				9BA1AE4B6C4C26F2F7DB7B28 /* Info.plist */,
 			);
-			path = "blank-tauri-app_iOS";
+			path = "faceable_iOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EE8483A8CCD16C6290C684AD /* blank-tauri-app_iOS */ = {
+		EE8483A8CCD16C6290C684AD /* faceable_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 549D217643B6554C64AC416D /* Build configuration list for PBXNativeTarget "blank-tauri-app_iOS" */;
+			buildConfigurationList = 549D217643B6554C64AC416D /* Build configuration list for PBXNativeTarget "faceable_iOS" */;
 			buildPhases = (
 				EA10234811B2D92141BE2FEF /* Build Rust Code */,
 				C74C0DDC8F887110FB7EC740 /* Sources */,
@@ -166,9 +166,9 @@
 			);
 			dependencies = (
 			);
-			name = "blank-tauri-app_iOS";
-			productName = "blank-tauri-app_iOS";
-			productReference = C29D36FC8598D14607A88B9D /* blank-tauri-app_iOS.app */;
+			name = "faceable_iOS";
+			productName = "faceable_iOS";
+			productReference = C29D36FC8598D14607A88B9D /* faceable_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6D2B5F087095897A5B486AD3 /* Build configuration list for PBXProject "blank-tauri-app" */;
+			buildConfigurationList = 6D2B5F087095897A5B486AD3 /* Build configuration list for PBXProject "faceable" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -198,7 +198,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EE8483A8CCD16C6290C684AD /* blank-tauri-app_iOS */,
+				EE8483A8CCD16C6290C684AD /* faceable_iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -231,9 +231,9 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/Externals/x86_64/${CONFIGURATION}/libblank_tauri_app_lib.a",
-				"$(SRCROOT)/Externals/arm64/${CONFIGURATION}/libblank_tauri_app_lib.a",
-				"$(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libblank_tauri_app_lib.a",
+				"$(SRCROOT)/Externals/x86_64/${CONFIGURATION}/libfaceable_lib.a",
+				"$(SRCROOT)/Externals/arm64/${CONFIGURATION}/libfaceable_lib.a",
+				"$(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libfaceable_lib.a",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -381,7 +381,7 @@
 					"arm64-sim",
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "blank-tauri-app_iOS/blank-tauri-app_iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "faceable_iOS/faceable_iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J7TKXRF8TH;
@@ -392,7 +392,7 @@
 					"$(inherited)",
 					"\".\"",
 				);
-				INFOPLIST_FILE = "blank-tauri-app_iOS/Info.plist";
+				INFOPLIST_FILE = "faceable_iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -401,7 +401,7 @@
 				"LIBRARY_SEARCH_PATHS[arch=arm64]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
 				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(inherited) $(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tauri.dev;
-				PRODUCT_NAME = "blank-tauri-app";
+				PRODUCT_NAME = "faceable";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  arm64-sim";
@@ -417,7 +417,7 @@
 					"arm64-sim",
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "blank-tauri-app_iOS/blank-tauri-app_iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "faceable_iOS/faceable_iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J7TKXRF8TH;
@@ -428,7 +428,7 @@
 					"$(inherited)",
 					"\".\"",
 				);
-				INFOPLIST_FILE = "blank-tauri-app_iOS/Info.plist";
+				INFOPLIST_FILE = "faceable_iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,7 +437,7 @@
 				"LIBRARY_SEARCH_PATHS[arch=arm64]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
 				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(inherited) $(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tauri.dev;
-				PRODUCT_NAME = "blank-tauri-app";
+				PRODUCT_NAME = "faceable";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  arm64-sim";
@@ -447,7 +447,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		549D217643B6554C64AC416D /* Build configuration list for PBXNativeTarget "blank-tauri-app_iOS" */ = {
+		549D217643B6554C64AC416D /* Build configuration list for PBXNativeTarget "faceable_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B0D555332D08159B2F27CCA4 /* debug */,
@@ -456,7 +456,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = debug;
 		};
-		6D2B5F087095897A5B486AD3 /* Build configuration list for PBXProject "blank-tauri-app" */ = {
+		6D2B5F087095897A5B486AD3 /* Build configuration list for PBXProject "faceable" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8D661DA1971E9D9135BE429B /* debug */,

@@ -1,5 +1,5 @@
 [package]
-name = "blank-tauri-app"
+name = "faceable"
 version = "0.0.0"
 description = "The next big thing."
 authors = ["you"]
@@ -8,7 +8,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
-name = "blank_tauri_app_lib"
+name = "faceable_lib"
 crate-type = ["lib", "cdylib", "staticlib"]
 
 [build-dependencies]

@@ -1,96 +1,128 @@
-import { Button } from "@heroui/react";
-import { Settings, Sparkles } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { useEffect, useRef, useState } from "react";
+import { Card, Button, Link } from "@heroui/react";
+import "./home.css";
 
-export default function HomePage() {
-  const navigate = useNavigate();
-  const { t } = useTranslation();
 
-  const links = [
-    {
-      href: "https://github.com/Wind-Explorer/blank-tauri-app",
-      name: "github",
-      path: ".com/Wind-Explorer/blank-tauri-app",
-    },
-    {
-      href: "https://reactrouter.com/start/declarative/routing",
-      name: "reactrouter",
-      path: ".com/start/declarative/routing",
-    },
-    {
-      href: "https://www.i18next.com/overview/getting-started",
-      name: "i18next",
-      path: ".com/overview/getting-started",
-    },
-    {
-      href: "https://www.heroui.com/docs/components",
-      name: "heroui",
-      path: ".com/docs/components",
-    },
-    { href: "https://tailwindcss.com/", name: "tailwindcss", path: ".com" },
-    { href: "https://lucide.dev/icons", name: "lucide", path: ".dev/icons" },
-    { href: "https://tauri.app/", name: "tauri", path: ".app" },
-  ];
+export default function Home() {
+
+  const [isVisible, setIsVisible] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target); // Only animate once
+        }
+      },
+      { threshold: 0.3 } // Trigger when 30% of image is visible
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => {
+      if (imgRef.current) observer.unobserve(imgRef.current);
+    };
+  }, []);
+
 
   return (
-    <div className="w-full h-full">
-      <div className="p-8 h-full flex flex-col justify-between gap-4">
-        <div className="flex flex-col gap-6">
-          <img
-            src="https://avatars.githubusercontent.com/u/66894537"
-            alt="Github Profile Image"
-            className="w-16 h-16 rounded-full border border-foreground/25"
-          />
-          <div className="flex flex-col gap-2">
-            <span className="flex flex-row gap-2 items-center">
-              <p className="text-xl">{t("home.heading")}</p>
-              <Sparkles size={23} color="orange" />
-            </span>
-            <div className="flex flex-col text-sm *:opacity-70">
-              {links.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  className="group"
+    <main className="flex flex-col items-center justify-center px-4 py-12 text-center  mx-auto text-black bg-white">
+      {/* Hero Section */}
+      <header className="px-4 py-16 md:py-24 w-full max-w-4xl mx-auto">
+        <div className="w-full flex flex-col items-start space-y-12">
+          {/* Headline */}
+          <div className="text-left w-full">
+            <span
+              aria-hidden="true"
+              className="inline-flex flex-wrap gap-2 text-4xl md:text-5xl font-bold tracking-tighter"
+            >
+              {["Streamlining", "Processes", "the", "Modern", "Way"].map((word, index) => (
+                <span
+                  key={index}
+                  className="inline-block animate-[fadeInUp_0.5s_ease-in-out_forwards] opacity-0 translate-y-6"
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <b>{link.name}</b>
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    {link.path}
-                  </span>
-                </a>
+                  {word}
+                </span>
               ))}
-            </div>
+            </span>
+          </div>
+
+          {/* Subheading */}
+          <p className="text-lg md:text-xl font-medium text-gray-500 animate-fade-in [animation-delay:0.6s] opacity-0">
+            Smarter Retail Tracking 
+          </p>
+
+          {/* Buttons */}
+          <div className="flex gap-4 animate-fade-in [animation-delay:0.7s] opacity-0">
+            <a
+              href="/login"
+              className="px-5 py-2 bg-black text-white rounded-md hover:bg-white hover:text-black border border-black transition-all duration-300 font-medium text-sm"
+            >
+              Get Started
+            </a>
+            <a
+              href="https://linear.app/agents"
+              className="px-5 py-2 text-black border border-black rounded-md hover:bg-black hover:text-white transition-all duration-300 font-medium text-sm"
+            >
+              Log in →
+            </a>
           </div>
         </div>
-        <div className="flex flex-row w-full justify-between items-center">
-          <Button
-            isIconOnly
-            variant="light"
-            onPress={() => {
-              navigate("/settings");
-            }}
-          >
-            <Settings />
-          </Button>
-          <span>
-            Edit{" "}
-            <code className="px-2 py-1 mx-1 rounded-md bg-neutral-500/25">
-              HomePage.tsx
-            </code>{" "}
-            to get started
-          </span>
+      </header>
+
+      <img
+  ref={imgRef}
+  src="/course-explainer.avif"
+  alt="Course Explainer"
+  className={`w-full max-w-4xl rounded-lg shadow-md mb-16 transform transition-opacity duration-1000 ease-in-out ${
+    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+  }`}
+/>
+
+
+      {/* How It Works */}
+      <section className="mb-16 w-full max-w-4xl">
+        <h2 className="text-2xl font-semibold mb-8">How It Works</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { title: "1. Take a Shelf Photo", desc: "Store managers snap a picture of the ANS product shelf." },
+            { title: "2. AI SKU Detection", desc: "Our AI detects and counts each visible ANS SKU." },
+            { title: "3. Analyze Instantly", desc: "View real-time analytics on your personalized dashboard." },
+          ].map((step, i) => (
+            <Card key={i} className="border border-black bg-white">
+              <div className="p-6">
+                <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
+                <p className="text-sm text-gray-600">{step.desc}</p>
+              </div>
+            </Card>
+          ))}
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* Why Faceable? */}
+      <section className="mb-16 w-full max-w-4xl">
+        <h2 className="text-2xl font-semibold mb-8">Why Faceable?</h2>
+        <ul className="space-y-4 text-left text-sm text-gray-700 list-disc list-inside">
+          <li>Reduces time spent on manual shelf checks</li>
+          <li>Provides real-time product visibility</li>
+          <li>Helps make smarter merchandising decisions</li>
+        </ul>
+      </section>
+
+      {/* Final CTA */}
+      <section className="w-full max-w-4xl text-center">
+        <h2 className="text-xl font-semibold mb-4">Ready to streamline shelf audits?</h2>
+        <Link href="/upload">
+          <Button className="px-8 py-4 text-base bg-black text-white hover:bg-white hover:text-black border border-black transition-all duration-300">
+            Start Now
+          </Button>
+        </Link>
+      </section>
+    </main>
   );
 }
-
-// export default function HomePage() {
-//   return (
-//     <div>
-//       <p>Home</p>
-//     </div>
-//   );
-// }

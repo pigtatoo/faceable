@@ -4,7 +4,7 @@
   },
   "settings": {
     "heading": "应用设置",
-    "subheading": "配置 blank-tauri-app",
+    "subheading": "配置 faceable",
     "localeSwitcher": {
       "label": "语言",
       "placeholder": "选择语言"

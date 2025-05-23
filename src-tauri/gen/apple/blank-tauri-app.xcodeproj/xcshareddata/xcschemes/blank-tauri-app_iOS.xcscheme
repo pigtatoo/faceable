@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EE8483A8CCD16C6290C684AD"
-               BuildableName = "blank-tauri-app_iOS.app"
-               BlueprintName = "blank-tauri-app_iOS"
-               ReferencedContainer = "container:blank-tauri-app.xcodeproj">
+               BuildableName = "faceable_iOS.app"
+               BlueprintName = "faceable_iOS"
+               ReferencedContainer = "container:faceable.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EE8483A8CCD16C6290C684AD"
-            BuildableName = "blank-tauri-app_iOS.app"
-            BlueprintName = "blank-tauri-app_iOS"
-            ReferencedContainer = "container:blank-tauri-app.xcodeproj">
+            BuildableName = "faceable_iOS.app"
+            BlueprintName = "faceable_iOS"
+            ReferencedContainer = "container:faceable.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EE8483A8CCD16C6290C684AD"
-            BuildableName = "blank-tauri-app_iOS.app"
-            BlueprintName = "blank-tauri-app_iOS"
-            ReferencedContainer = "container:blank-tauri-app.xcodeproj">
+            BuildableName = "faceable_iOS.app"
+            BlueprintName = "faceable_iOS"
+            ReferencedContainer = "container:faceable.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -101,9 +101,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EE8483A8CCD16C6290C684AD"
-            BuildableName = "blank-tauri-app_iOS.app"
-            BlueprintName = "blank-tauri-app_iOS"
-            ReferencedContainer = "container:blank-tauri-app.xcodeproj">
+            BuildableName = "faceable_iOS.app"
+            BlueprintName = "faceable_iOS"
+            ReferencedContainer = "container:faceable.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>

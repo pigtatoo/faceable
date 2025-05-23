@@ -140,7 +140,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "blank-tauri-app"
+name = "faceable"
 version = "0.0.0"
 dependencies = [
  "cocoa",
