@@ -34,7 +34,7 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="w-full h-[1000px]">
+    <div className="w-full h-[2000px]">
       <div className="p-8 h-full flex flex-col justify-between gap-4">
         <div className="flex flex-col gap-6">
           <img
