@@ -1,0 +1,30 @@
+[package]
+name = "blank-tauri-app"
+version = "0.0.0"
+description = "The next big thing."
+authors = ["you"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "blank_tauri_app_lib"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+tauri-plugin-os = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+specta = "=2.0.0-rc.20"
+specta-typescript = "0.0.7"
+tauri-specta = { version = "=2.0.0-rc.20", features = ["derive", "typescript"] }
+rand = "0.8.5"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc = "0.2.7"
+cocoa = "0.26.0"

@@ -1,0 +1,40 @@
+{
+  "name": "blank-tauri-app",
+  "private": true,
+  "version": "0.0.124",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@heroui/react": "2.7.6",
+    "@tauri-apps/api": "^2.4.1",
+    "@tauri-apps/plugin-os": "^2.2.1",
+    "@tauri-apps/plugin-shell": "^2.2.1",
+    "framer-motion": "^11.18.2",
+    "i18next": "^24.2.3",
+    "i18next-browser-languagedetector": "^8.0.4",
+    "i18next-http-backend": "^3.0.2",
+    "lodash": "^4.17.21",
+    "lucide-react": "^0.487.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.4.1",
+    "react-router-dom": "^6.30.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.4.1",
+    "@types/lodash": "^4.17.16",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.6",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.18"
+  }
+}

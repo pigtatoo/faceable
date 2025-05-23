@@ -1,0 +1,13 @@
+{
+  "identifier": "cn.wind-explorer.blank-tauri-app",
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "decorations": false,
+        "minWidth": 600,
+        "minHeight": 450
+      }
+    ]
+  }
+}
