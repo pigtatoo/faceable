@@ -69,12 +69,12 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
       className={cn(
         "fixed left-1/2 top-4 z-50 mx-auto w-11/12 max-w-6xl -translate-x-1/2 rounded-full px-4 transition-transform duration-300 ease-in-out",
         isVisible || isAtTop ? "translate-y-0" : "-translate-y-[150%]",
-        !isAtTop && "shadow-lg border border-gray-400 bg-white/90 backdrop-blur-md",
+        !isAtTop && "shadow-lg border border-foreground bg-background/90 backdrop-blur-md",
         isAtTop && "bg-transparent border-none shadow-none backdrop-blur-none"
       )}
     >
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
-        <Link to="/" className="flex items-center gap-2 font-medium">
+        <Link to="/" className="flex items-center gap-2 font-medium text-foreground">
           <span className="text-lg font-semibold">Faceable</span>
         </Link>
         {/* Desktop nav */}
@@ -84,7 +84,7 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-sm font-medium text-gray-700 hover:text-gray-900"
+                className="text-sm font-medium text-foreground hover:text-accent-foreground"
               >
                 {link.name}
               </Link>
@@ -92,7 +92,7 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
               <a
                 key={link.name}
                 href={link.path}
-                className="text-sm font-medium text-gray-700 hover:text-gray-900"
+                className="text-sm font-medium text-foreground hover:text-accent-foreground"
               >
                 {link.name}
               </a>
@@ -101,20 +101,20 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
         </nav>
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
+          className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-foreground"
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           onClick={() => setMobileMenuOpen((v) => !v)}
         >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileMenuOpen ? <X className="h-6 w-6 text-foreground" /> : <Menu className="h-6 w-6 text-foreground" />}
         </button>
         <div className="hidden md:flex items-center gap-4">
           <Button
             to="/login"
-            className="text-sm font-medium text-gray-700 hover:text-gray-900"
+            className="text-sm font-medium text-foreground hover:text-accent-foreground"
           >
             Login
           </Button>
-          <Button className="rounded-full bg-black text-sm font-medium text-white flex items-center hover:text-white/70">
+          <Button className="rounded-full bg-foreground text-sm font-medium text-background flex items-center hover:text-background/70">
             Sign up <ArrowUpRight className="ml-1 h-4 w-4" />
           </Button>
         </div>
@@ -122,7 +122,7 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
       {/* Mobile menu overlay - ensure it closes menu and is fully hidden when closed */}
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity md:hidden",
+          "fixed inset-0 z-40 bg-background/80 backdrop-blur-sm transition-opacity md:hidden",
           mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
         onClick={() => setMobileMenuOpen(false)}
@@ -131,7 +131,7 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
       {/* Mobile menu dropdown with close button inside */}
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 bg-white shadow-md transition-transform duration-300 md:hidden flex flex-col gap-4 p-6 pt-20",
+          "fixed top-0 left-0 right-0 z-50 bg-background shadow-md transition-transform duration-300 md:hidden flex flex-col gap-4 p-6 pt-20",
           mobileMenuOpen ? "translate-y-0 opacity-100 pointer-events-auto" : "-translate-y-full opacity-0 pointer-events-none"
         )}
         style={{ borderRadius: "0 0 1.5rem 1.5rem" }}
@@ -139,18 +139,18 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
       >
         {/* Close button inside dropdown */}
         <button
-          className="absolute top-4 right-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
+          className="absolute top-4 right-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-foreground"
           aria-label="Close menu"
           onClick={() => setMobileMenuOpen(false)}
         >
-          <X className="h-6 w-6" />
+          <X className="h-6 w-6 text-foreground" />
         </button>
         {NAV_LINKS.map(link =>
           link.path.startsWith("/") ? (
             <Link
               key={link.name}
               to={link.path}
-              className="text-base font-medium text-gray-700 hover:text-gray-900 py-2"
+              className="text-base font-medium text-foreground hover:text-accent-foreground py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.name}
@@ -159,7 +159,7 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
             <a
               key={link.name}
               href={link.path}
-              className="text-base font-medium text-gray-700 hover:text-gray-900 py-2"
+              className="text-base font-medium text-foreground hover:text-accent-foreground py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.name}
@@ -168,13 +168,13 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
         )}
         <Link
           to="/login"
-          className="text-base font-medium text-gray-700 hover:text-gray-900 py-2"
+          className="text-base font-medium text-foreground hover:text-accent-foreground py-2"
           onClick={() => setMobileMenuOpen(false)}
         >
           Log in
         </Link>
         <Button
-          className="rounded-full bg-black text-white hover:bg-black/90 flex items-center w-full justify-center mt-2"
+          className="rounded-full bg-foreground text-background hover:bg-foreground/90 flex items-center w-full justify-center mt-2"
           onClick={() => setMobileMenuOpen(false)}
         >
           Sign up <ArrowUpRight className="ml-1 h-4 w-4" />
