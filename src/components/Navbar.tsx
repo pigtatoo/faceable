@@ -20,7 +20,7 @@ interface NavbarProps {
 
 const NAV_LINKS = [
   { name: "How it works", path: "#how-it-works" },
-  { name: "Upload", path: "#use-cases" },
+  { name: "Upload", path: "/upload" },
   { name: "Dashboard", path: "/dashboard" },
   { name: "Product", path: "#product" },
 ]
