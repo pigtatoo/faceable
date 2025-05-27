@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { ArrowUpRight, Menu, X } from "lucide-react"
+import facelogo from "../../src/components/facelogo.png"
 
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
@@ -16,23 +17,35 @@ function Button({ children, className, ...props }: any) {
 
 interface NavbarProps {
   scrollContainerRef?: React.RefObject<HTMLDivElement>
+  alwaysShow?: boolean // Add alwaysShow prop
 }
 
 const NAV_LINKS = [
-  { name: "How it works", path: "#how-it-works" },
+  {
+    name: "How it works",
+    path: "/#how-it-works",
+    isScroll: true,
+  },
   { name: "Upload", path: "/upload" },
   { name: "Dashboard", path: "/dashboard" },
   { name: "Product", path: "#product" },
 ]
 
-export default function Navbar({ scrollContainerRef }: NavbarProps) {
+export default function Navbar({ scrollContainerRef, alwaysShow }: NavbarProps) {
   const [isAtTop, setIsAtTop] = useState(true)
   const [isVisible, setIsVisible] = useState(true)
   const lastScrollY = useRef(0)
   const ticking = useRef(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
+    if (alwaysShow) {
+      setIsVisible(true)
+      setIsAtTop(true)
+      return
+    }
     const container = scrollContainerRef?.current || window
     const getScrollY = () =>
       scrollContainerRef?.current ? scrollContainerRef.current.scrollTop : window.scrollY
@@ -54,7 +67,7 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
     }
     container.addEventListener("scroll", handleScroll, { passive: true })
     return () => container.removeEventListener("scroll", handleScroll)
-  }, [scrollContainerRef])
+  }, [scrollContainerRef, alwaysShow])
 
   // Close mobile menu on route change or scroll
   useEffect(() => {
@@ -64,18 +77,48 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
     return () => window.removeEventListener("resize", closeMenu)
   }, [mobileMenuOpen])
 
+  // Helper for handling nav link clicks
+  function handleNavLinkClick(link: any, e: React.MouseEvent) {
+    if (link.isScroll) {
+      e.preventDefault()
+      if (location.pathname === "/") {
+        // Already on homepage, scroll
+        const el = document.getElementById("how-it-works")
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" })
+        }
+      } else {
+        // Navigate to homepage, then scroll after navigation
+        navigate("/", { state: { scrollTo: "how-it-works" } })
+      }
+    }
+  }
+
+  useEffect(() => {
+    // If navigated with scrollTo state, scroll after render
+    if (location.pathname === "/" && (location.state as any)?.scrollTo) {
+      const el = document.getElementById((location.state as any).scrollTo)
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" })
+        }, 100) // wait for render
+      }
+    }
+  }, [location])
+
   return (
     <header
       className={cn(
         "fixed left-1/2 top-4 z-50 mx-auto w-11/12 max-w-6xl -translate-x-1/2 rounded-full px-4 transition-transform duration-300 ease-in-out",
-        isVisible || isAtTop ? "translate-y-0" : "-translate-y-[150%]",
+        alwaysShow ? "translate-y-0" : (isVisible || isAtTop ? "translate-y-0" : "-translate-y-[150%]"),
         !isAtTop && "shadow-lg border border-foreground bg-background/90 backdrop-blur-md",
         isAtTop && "bg-transparent border-none shadow-none backdrop-blur-none"
       )}
     >
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2 font-medium text-foreground">
-          <span className="text-lg font-semibold">Faceable</span>
+          <img src={facelogo} alt="Faceable Logo" className="h-8 w-8" />
+          <span className="text-lg font-semibold" style={{ color: "#4285f4" }}>Faceable</span>
         </Link>
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
@@ -85,6 +128,7 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
                 key={link.name}
                 to={link.path}
                 className="text-sm font-medium text-foreground hover:text-accent-foreground"
+                onClick={link.isScroll ? (e) => handleNavLinkClick(link, e) : undefined}
               >
                 {link.name}
               </Link>
@@ -151,7 +195,7 @@ export default function Navbar({ scrollContainerRef }: NavbarProps) {
               key={link.name}
               to={link.path}
               className="text-base font-medium text-foreground hover:text-accent-foreground py-2"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={link.isScroll ? (e) => { handleNavLinkClick(link, e); setMobileMenuOpen(false); } : () => setMobileMenuOpen(false)}
             >
               {link.name}
             </Link>

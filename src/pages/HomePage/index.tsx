@@ -78,7 +78,7 @@ export default function HomePage() {
         className={`w-full max-w-4xl rounded-lg shadow-md mb-16 transform transition-opacity duration-1000 ease-in-out ${isVisible ? "opacity-100 translate-y-0 animate-fade-in" : "opacity-0 translate-y-6"} bg-background "`}
       />
       {/* How It Works */}
-      <section className="mb-16 w-full max-w-4xl">
+      <section id="how-it-works" className="mb-16 w-full max-w-4xl">
         <h2 className="text-2xl font-semibold mb-8 text-foreground">How It Works</h2>
         <div className="grid md:grid-cols-3 gap-6">
           { [
