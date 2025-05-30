@@ -118,7 +118,7 @@ export default function Navbar({ scrollContainerRef, alwaysShow }: NavbarProps) 
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2 font-medium text-foreground">
           <img src={facelogo} alt="Faceable Logo" className="h-8 w-8" />
-          <span className="text-lg font-semibold" style={{ color: "#4285f4" }}>Faceable</span>
+          <span className="text-lg" style={{ color: "#4285f4", fontFamily: 'Cal Sans, sans-serif' }}>Faceable</span>
         </Link>
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
